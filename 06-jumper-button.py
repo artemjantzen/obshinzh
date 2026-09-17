@@ -16,5 +16,16 @@ GPIO.setup(down, GPIO.IN)
 GPIO.output(leds, 0)
 
 while True:
-    print(GPIO.input(up));
+    if GPIO.input(up):
+        print('up')
+        if (num < 255):
+            num = num + 1
+            print(num, dec2bin(num))
+            GPIO.output(leds, dec2bin(num))
+    if GPIO.input(down):
+        print('down')
+        if (num > 255):
+            num = num - 1
+            print(num, dec2bin(num))
+            GPIO.output(leds, dec2bin(num))
     time.sleep(0.1)
